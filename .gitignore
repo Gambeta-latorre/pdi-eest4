@@ -1,0 +1,10 @@
+# Configuración local (contraseñas)
+.env
+
+# Dependencias de Composer
+/vendor/
+
+# Logs
+*.log
+logs/*
+!logs/.gitkeep
