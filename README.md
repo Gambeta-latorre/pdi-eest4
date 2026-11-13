@@ -14,7 +14,7 @@ MVP que analiza qué puertos están abiertos en un equipo de la red local y mues
 
 **Escuela:** E.E.S.T. N°4 Berazategui — **Materia:** PDI Sistemas Computacionales 7°2 — **Docentes:** Fabricio Futryk y Diego Pezet
 
-**Kanban (GitHub Project):** PROJECT_URL
+**Kanban (GitHub Project):** <https://github.com/users/Gambeta-latorre/projects/3> — **Issues (historias):** <https://github.com/Gambeta-latorre/pdi-eest4/issues>
 
 ## Tecnologías
 
@@ -108,7 +108,7 @@ Los formularios HTML solo envían GET y POST: para PUT y DELETE se agrega un cam
 |---|---|---|
 | 3 | Git y GitHub | Este repo, [`.gitignore`](.gitignore), [`LICENSE`](LICENSE), este README, historial de commits chicos |
 | 4 | User Story Mapping | [`docs/TP04-user-story-mapping.md`](docs/TP04-user-story-mapping.md) y [PDF](docs/TP04-user-story-mapping.pdf) |
-| 5 | Kanban y backlog | GitHub Project (link arriba), [`.github/ISSUE_TEMPLATE/historia-de-usuario.md`](.github/ISSUE_TEMPLATE/historia-de-usuario.md), issue de inicio de sesión |
+| 5 | Kanban y backlog | GitHub Project (link arriba), [`.github/ISSUE_TEMPLATE/historia-de-usuario.md`](.github/ISSUE_TEMPLATE/historia-de-usuario.md), issue de inicio de sesión [#1](https://github.com/Gambeta-latorre/pdi-eest4/issues/1) |
 | 6 | Slim + landing | [`public/index.php`](public/index.php), [`src/bootstrap.php`](src/bootstrap.php), [`src/views/index.php`](src/views/index.php), [`HomeController`](src/controllers/HomeController.php) |
 | 7 | Rutas con vistas | `GET /escaneos`, `/escaneos/{id}`, `/escaneos/create` en [`escaneos.routes.php`](src/routes/escaneos.routes.php) y [`src/views/escaneos/`](src/views/escaneos) |
 | 8 | Body | `POST /escaneos` → `EscaneoController::store` muestra datos enviados y resultado |
@@ -118,7 +118,7 @@ Los formularios HTML solo envían GET y POST: para PUT y DELETE se agrega un cam
 | 12 | Auth y middlewares | [`AuthController`](src/controllers/AuthController.php), [`AuthMiddleware`](src/middlewares/AuthMiddleware.php), [`LogMiddleware`](src/middlewares/LogMiddleware.php) → consola y `logs/app.log` |
 | 13 | Rutas modulares | [`src/routes/`](src/routes): `home`, `auth` y `escaneos.routes.php`, cargados con `require` en `bootstrap.php` |
 | 14 | Arquitectura en capas | `src/routes → src/controllers → src/services → src/persistence` (ver sección Arquitectura) |
-| 15 | Backlog MVP | [`docs/TP15-backlog-mvp.md`](docs/TP15-backlog-mvp.md) + un issue por historia en el Project |
+| 15 | Backlog MVP | [`docs/TP15-backlog-mvp.md`](docs/TP15-backlog-mvp.md) + un issue por historia ([#1–#8](https://github.com/Gambeta-latorre/pdi-eest4/issues)) en el Project |
 | Checkpoint | Lógica de programación | [`docs/checkpoint-diagramas.md`](docs/checkpoint-diagramas.md) (Mermaid) y PNG en [`docs/diagramas/`](docs/diagramas) |
 
 ## Capturas

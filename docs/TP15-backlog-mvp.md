@@ -1,17 +1,17 @@
 # TP15 — Backlog del MVP de TraffiCop
 
-Cada historia es un ticket (issue de GitHub creado con el template `historia-de-usuario`) y está en el GitHub Project Kanban del repositorio. Los criterios de aceptación están escritos para que se puedan **verificar** probando la aplicación (en el navegador o con `curl`).
+Cada historia es un ticket (issue de GitHub creado con el template `historia-de-usuario`) y está en la columna **Todo** del [GitHub Project Kanban](https://github.com/users/Gambeta-latorre/projects/3). Los criterios de aceptación están escritos para que se puedan **verificar** probando la aplicación (en el navegador o con `curl`).
 
-| ID | Historia | Prioridad | Estimación |
-|---|---|---|---|
-| HU-01 | Registro de usuario | Alta | 3 |
-| HU-02 | Inicio de sesión con email y contraseña | Alta | 3 |
-| HU-03 | Nuevo escaneo | Alta | 5 |
-| HU-04 | Ver resultado con riesgo | Alta | 3 |
-| HU-05 | Historial de escaneos | Media | 2 |
-| HU-06 | Editar notas de un escaneo | Media | 2 |
-| HU-07 | Borrar un escaneo | Media | 1 |
-| HU-08 | Ver la landing | Baja | 1 |
+| ID | Historia | Prioridad | Estimación | Issue |
+|---|---|---|---|---|
+| HU-01 | Registro de usuario | Alta | 3 | [#2](https://github.com/Gambeta-latorre/pdi-eest4/issues/2) |
+| HU-02 | Inicio de sesión con email y contraseña | Alta | 3 | [#1](https://github.com/Gambeta-latorre/pdi-eest4/issues/1) |
+| HU-03 | Nuevo escaneo | Alta | 5 | [#3](https://github.com/Gambeta-latorre/pdi-eest4/issues/3) |
+| HU-04 | Ver resultado con riesgo | Alta | 3 | [#4](https://github.com/Gambeta-latorre/pdi-eest4/issues/4) |
+| HU-05 | Historial de escaneos | Media | 2 | [#5](https://github.com/Gambeta-latorre/pdi-eest4/issues/5) |
+| HU-06 | Editar notas de un escaneo | Media | 2 | [#6](https://github.com/Gambeta-latorre/pdi-eest4/issues/6) |
+| HU-07 | Borrar un escaneo | Media | 1 | [#7](https://github.com/Gambeta-latorre/pdi-eest4/issues/7) |
+| HU-08 | Ver la landing | Baja | 1 | [#8](https://github.com/Gambeta-latorre/pdi-eest4/issues/8) |
 
 <!-- Cada sección "## HU-xx" de abajo es el cuerpo de un issue. -->
 
