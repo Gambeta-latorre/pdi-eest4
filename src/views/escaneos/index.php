@@ -1,6 +1,6 @@
 <section class="tarjeta">
     <div class="acciones" style="justify-content:space-between">
-        <h1>Mis escaneos</h1>
+        <h1>Historial de escaneos</h1>
         <a class="boton" href="/escaneos/create">Nuevo escaneo</a>
     </div>
 

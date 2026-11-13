@@ -27,7 +27,7 @@ class EscaneoController
             $limite = filter_var($query['limit'], FILTER_VALIDATE_INT, ['options' => ['min_range' => 1]]);
             if ($limite === false) {
                 return $this->vista->render($response->withStatus(400), 'escaneos/index.php', [
-                    'titulo' => 'Mis escaneos',
+                    'titulo' => 'Historial',
                     'escaneos' => [],
                     'limite' => null,
                     'error' => 'El parámetro limit debe ser un número entero positivo',
@@ -36,8 +36,8 @@ class EscaneoController
         }
 
         return $this->vista->render($response, 'escaneos/index.php', [
-            'titulo' => 'Mis escaneos',
-            'escaneos' => $this->escaneos->listar($this->usuarioId(), $limite),
+            'titulo' => 'Historial',
+            'escaneos' => $this->escaneos->listar($limite),
             'limite' => $limite,
         ]);
     }
@@ -64,10 +64,10 @@ class EscaneoController
 
         if ($error === null) {
             try {
-                $id = $this->escaneos->crear($this->usuarioId(), $objetivo, $notas === '' ? null : $notas);
+                $id = $this->escaneos->crear($objetivo, $notas === '' ? null : $notas);
                 return $this->vista->render($response->withStatus(201), 'escaneos/show.php', [
                     'titulo' => 'Resultado del escaneo',
-                    'escaneo' => $this->escaneos->ver($id, $this->usuarioId()),
+                    'escaneo' => $this->escaneos->ver($id),
                     'enviado' => ['objetivo' => $objetivo, 'notas' => $notas],
                 ]);
             } catch (RuntimeException $e) {
@@ -85,7 +85,7 @@ class EscaneoController
     // GET /escaneos/{id}
     public function show(Request $request, Response $response, array $args): Response
     {
-        $escaneo = $this->escaneos->ver((int) $args['id'], $this->usuarioId());
+        $escaneo = $this->escaneos->ver((int) $args['id']);
         if ($escaneo === null) {
             return $this->noEncontrado($response);
         }
@@ -98,7 +98,7 @@ class EscaneoController
     // GET /escaneos/{id}/edit
     public function edit(Request $request, Response $response, array $args): Response
     {
-        $escaneo = $this->escaneos->ver((int) $args['id'], $this->usuarioId());
+        $escaneo = $this->escaneos->ver((int) $args['id']);
         if ($escaneo === null) {
             return $this->noEncontrado($response);
         }
@@ -112,7 +112,7 @@ class EscaneoController
     public function update(Request $request, Response $response, array $args): Response
     {
         $id = (int) $args['id'];
-        $escaneo = $this->escaneos->ver($id, $this->usuarioId());
+        $escaneo = $this->escaneos->ver($id);
         if ($escaneo === null) {
             return $this->noEncontrado($response);
         }
@@ -127,7 +127,7 @@ class EscaneoController
             ]);
         }
 
-        $this->escaneos->actualizarNotas($id, $this->usuarioId(), $notas === '' ? null : $notas);
+        $this->escaneos->actualizarNotas($id, $notas === '' ? null : $notas);
         return $response->withHeader('Location', '/escaneos/' . $id)->withStatus(302);
     }
 
@@ -135,10 +135,10 @@ class EscaneoController
     public function destroy(Request $request, Response $response, array $args): Response
     {
         $id = (int) $args['id'];
-        if ($this->escaneos->ver($id, $this->usuarioId()) === null) {
+        if ($this->escaneos->ver($id) === null) {
             return $this->noEncontrado($response);
         }
-        $this->escaneos->borrar($id, $this->usuarioId());
+        $this->escaneos->borrar($id);
         return $response->withHeader('Location', '/escaneos')->withStatus(302);
     }
 
@@ -147,10 +147,5 @@ class EscaneoController
         return $this->vista->render($response->withStatus(404), 'escaneos/not_found.php', [
             'titulo' => 'Escaneo no encontrado',
         ]);
-    }
-
-    private function usuarioId(): int
-    {
-        return (int) $_SESSION['usuario']['id'];
     }
 }

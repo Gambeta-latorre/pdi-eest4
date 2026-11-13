@@ -1,5 +1,5 @@
 <?php
-// Módulo escaneos: CRUD completo. Todas las rutas requieren sesión (authMiddleware).
+// Módulo escaneos: CRUD completo.
 use Slim\Routing\RouteCollectorProxy;
 
 $app->group('/escaneos', function (RouteCollectorProxy $grupo) use ($escaneoController) {
@@ -10,4 +10,4 @@ $app->group('/escaneos', function (RouteCollectorProxy $grupo) use ($escaneoCont
     $grupo->get('/{id:[0-9]+}/edit', [$escaneoController, 'edit']); // formulario notas
     $grupo->put('/{id:[0-9]+}', [$escaneoController, 'update']);    // edita notas
     $grupo->delete('/{id:[0-9]+}', [$escaneoController, 'destroy']); // borra
-})->add($authMiddleware);
+});

@@ -31,15 +31,15 @@ class EscaneoService
         }
     }
 
-    public function listar(int $usuarioId, ?int $limite): array
+    public function listar(?int $limite): array
     {
-        return $this->repo->listar($usuarioId, $limite);
+        return $this->repo->listar($limite);
     }
 
-    // Devuelve el escaneo con sus puertos, o null si no existe o no es del usuario.
-    public function ver(int $id, int $usuarioId): ?array
+    // Devuelve el escaneo con sus puertos, o null si no existe.
+    public function ver(int $id): ?array
     {
-        $escaneo = $this->repo->buscar($id, $usuarioId);
+        $escaneo = $this->repo->buscar($id);
         if ($escaneo === null) {
             return null;
         }
@@ -48,12 +48,12 @@ class EscaneoService
     }
 
     // Escanea la IP y guarda el escaneo y sus puertos, todo junto o nada.
-    public function crear(int $usuarioId, string $objetivo, ?string $notas): int
+    public function crear(string $objetivo, ?string $notas): int
     {
         $resultado = $this->scanner->escanear($objetivo); // antes de abrir la transacción (tarda)
 
-        return $this->enTransaccion(function () use ($usuarioId, $objetivo, $notas, $resultado) {
-            $id = $this->repo->crear($usuarioId, $objetivo, $notas, json_encode($resultado));
+        return $this->enTransaccion(function () use ($objetivo, $notas, $resultado) {
+            $id = $this->repo->crear($objetivo, $notas, json_encode($resultado));
             foreach ($resultado['abiertos'] as $p) {
                 $this->repo->agregarPuerto($id, $p['puerto'], $p['servicio'], $p['riesgo']);
             }
@@ -61,13 +61,13 @@ class EscaneoService
         });
     }
 
-    public function actualizarNotas(int $id, int $usuarioId, ?string $notas): void
+    public function actualizarNotas(int $id, ?string $notas): void
     {
-        $this->enTransaccion(fn () => $this->repo->actualizarNotas($id, $usuarioId, $notas));
+        $this->enTransaccion(fn () => $this->repo->actualizarNotas($id, $notas));
     }
 
-    public function borrar(int $id, int $usuarioId): void
+    public function borrar(int $id): void
     {
-        $this->enTransaccion(fn () => $this->repo->borrar($id, $usuarioId));
+        $this->enTransaccion(fn () => $this->repo->borrar($id));
     }
 }

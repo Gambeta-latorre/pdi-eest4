@@ -1,4 +1,3 @@
-<?php $usuarioActual = $_SESSION['usuario'] ?? null; ?>
 <!doctype html>
 <html lang="es">
 <head>
@@ -35,15 +34,8 @@
 <header>
     <a href="/" class="logo">🚦 TraffiCop</a>
     <nav>
-        <?php if ($usuarioActual): ?>
-            <span class="suave">Hola, <?= e($usuarioActual['nombre']) ?></span>
-            <a href="/escaneos">Mis escaneos</a>
-            <a href="/escaneos/create">Nuevo escaneo</a>
-            <a href="/auth/logout">Salir</a>
-        <?php else: ?>
-            <a href="/auth/login">Iniciar sesión</a>
-            <a href="/auth/register">Crear cuenta</a>
-        <?php endif; ?>
+        <a href="/escaneos">Historial</a>
+        <a href="/escaneos/create">Nuevo escaneo</a>
     </nav>
 </header>
 <main>

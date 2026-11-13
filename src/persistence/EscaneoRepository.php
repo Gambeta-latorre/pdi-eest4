@@ -4,19 +4,17 @@ namespace App\persistence;
 use PDO;
 
 // Única clase que habla con las tablas "escaneos" y "puertos".
-// Siempre filtra por usuario_id: cada usuario ve solo sus escaneos.
 class EscaneoRepository
 {
     public function __construct(private PDO $pdo)
     {
     }
 
-    public function listar(int $usuarioId, ?int $limite): array
+    public function listar(?int $limite): array
     {
         $sql = 'SELECT e.id, e.objetivo, e.fecha, e.notas, COUNT(p.id) AS abiertos
                 FROM escaneos e
                 LEFT JOIN puertos p ON p.escaneo_id = e.id
-                WHERE e.usuario_id = :usuario
                 GROUP BY e.id
                 ORDER BY e.fecha DESC, e.id DESC';
         if ($limite !== null) {
@@ -24,7 +22,6 @@ class EscaneoRepository
         }
 
         $stmt = $this->pdo->prepare($sql);
-        $stmt->bindValue(':usuario', $usuarioId, PDO::PARAM_INT);
         if ($limite !== null) {
             $stmt->bindValue(':limite', $limite, PDO::PARAM_INT);
         }
@@ -32,10 +29,10 @@ class EscaneoRepository
         return $stmt->fetchAll();
     }
 
-    public function buscar(int $id, int $usuarioId): ?array
+    public function buscar(int $id): ?array
     {
-        $stmt = $this->pdo->prepare('SELECT * FROM escaneos WHERE id = ? AND usuario_id = ?');
-        $stmt->execute([$id, $usuarioId]);
+        $stmt = $this->pdo->prepare('SELECT * FROM escaneos WHERE id = ?');
+        $stmt->execute([$id]);
         return $stmt->fetch() ?: null;
     }
 
@@ -48,13 +45,12 @@ class EscaneoRepository
         return $stmt->fetchAll();
     }
 
-    public function crear(int $usuarioId, string $objetivo, ?string $notas, string $resultados): int
+    public function crear(string $objetivo, ?string $notas, string $resultados): int
     {
         $stmt = $this->pdo->prepare(
-            'INSERT INTO escaneos (usuario_id, objetivo, fecha, notas, resultados)
-             VALUES (?, ?, NOW(), ?, ?)'
+            'INSERT INTO escaneos (objetivo, fecha, notas, resultados) VALUES (?, NOW(), ?, ?)'
         );
-        $stmt->execute([$usuarioId, $objetivo, $notas, $resultados]);
+        $stmt->execute([$objetivo, $notas, $resultados]);
         return (int) $this->pdo->lastInsertId();
     }
 
@@ -66,16 +62,16 @@ class EscaneoRepository
         $stmt->execute([$escaneoId, $puerto, $servicio, $riesgo]);
     }
 
-    public function actualizarNotas(int $id, int $usuarioId, ?string $notas): void
+    public function actualizarNotas(int $id, ?string $notas): void
     {
-        $stmt = $this->pdo->prepare('UPDATE escaneos SET notas = ? WHERE id = ? AND usuario_id = ?');
-        $stmt->execute([$notas, $id, $usuarioId]);
+        $stmt = $this->pdo->prepare('UPDATE escaneos SET notas = ? WHERE id = ?');
+        $stmt->execute([$notas, $id]);
     }
 
     // Los puertos se borran solos gracias al ON DELETE CASCADE.
-    public function borrar(int $id, int $usuarioId): void
+    public function borrar(int $id): void
     {
-        $stmt = $this->pdo->prepare('DELETE FROM escaneos WHERE id = ? AND usuario_id = ?');
-        $stmt->execute([$id, $usuarioId]);
+        $stmt = $this->pdo->prepare('DELETE FROM escaneos WHERE id = ?');
+        $stmt->execute([$id]);
     }
 }
