@@ -4,6 +4,8 @@
 
 **Docentes:** Fabricio Futryk y Diego Pezet
 
+> **Nota posterior:** este mapa es la planificación entregada en el TP4. Después, por indicación docente, el registro y el inicio de sesión dejaron de ser necesarios y se quitaron de la aplicación. El backlog actualizado está en [TP15](TP15-backlog-mvp.md).
+
 > TraffiCop ayuda a pequeños negocios y hogares a ver qué puertos tiene abiertos su red y qué riesgo implica cada uno, con una explicación simple.
 
 **Usuario principal:** dueño de un pequeño negocio o persona en su casa, sin conocimientos técnicos de redes, que quiere saber si su red está expuesta.
