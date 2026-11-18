@@ -1,0 +1,28 @@
+{
+    "name": "gambeta-latorre/trafficop",
+    "description": "TraffiCop: analizador de puertos abiertos en la red local (PDI - E.E.S.T. N°4 Berazategui)",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.2",
+        "slim/slim": "^4.14",
+        "slim/psr7": "^1.7",
+        "slim/php-view": "^3.4",
+        "vlucas/phpdotenv": "^5.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "scripts": {
+        "migrate": "php scripts/migrate.php",
+        "start": "php -S localhost:8000 -t public"
+    },
+    "config": {
+        "process-timeout": 0
+    }
+}
