@@ -10,7 +10,8 @@ MVP que analiza qué puertos están abiertos en un equipo de la red local y mues
 
 | Nombre | GitHub | Rol |
 |---|---|---|
-| Juan Cruz | [@Gambeta-Latorre](https://github.com/Gambeta-Latorre) | Desarrollo completo (trabajo individual) |
+| Juan Cruz | [@Gambeta-Latorre](https://github.com/Gambeta-Latorre) | Integrante |
+| Lorenzo Mondo | [@lorendou](https://github.com/lorendou) | Integrante |
 
 **Escuela:** E.E.S.T. N°4 Berazategui — **Materia:** PDI Sistemas Computacionales 7°2 — **Docentes:** Fabricio Futryk y Diego Pezet
 
