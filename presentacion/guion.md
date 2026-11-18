@@ -63,7 +63,7 @@ Si van atrasados, recorten la diapositiva 6 y acorten la demo (saltear "editar n
 - [ ] En la carpeta del proyecto: `composer migrate` y después `php -S localhost:8000 -t public`.
 - [ ] Abrir <http://localhost:8000> en el navegador y dejarlo en pantalla completa.
 - [ ] Hacer un escaneo de prueba a `127.0.0.1` para que el historial no esté vacío.
-- [ ] **Plan B:** llevar el video de la demo en un pendrive por si falla algo.
+- [ ] **Plan B:** el video de la demo (1:24, con subtítulos) está dentro de la diapositiva 7: clic para reproducir. También está suelto como `TraffiCop-demo.mp4`; llévenlo en un pendrive por las dudas.
 
 **Paso a paso (lo que se hace → lo que se dice):**
 
@@ -78,7 +78,7 @@ Si van atrasados, recorten la diapositiva 6 y acorten la demo (saltear "editar n
 | 7 | Entra a un escaneo → **Editar notas** → cambia el texto → Guardar | "Le podés poner notas, por ejemplo 'router de la oficina', para acordarte qué equipo era." |
 | 8 | **Borrar** → confirmar | "Y si un escaneo ya no te sirve, lo borrás." |
 
-> Si algo falla en vivo, no se pongan nerviosos: "por las dudas trajimos el video" y lo ponen.
+> Si algo falla en vivo, no se pongan nerviosos: "por las dudas trajimos el video", vuelven a la diapositiva 7, clic en el video y lo narran encima.
 
 ---
 
